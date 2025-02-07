@@ -16,22 +16,33 @@ import {
   Bot,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-
-const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string;
-const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({
-  model: 'gemini-2.0-flash',
-});
-
-const generationConfig = {
-  temperature: 1,
-  topP: 0.95,
-  topK: 40,
-  maxOutputTokens: 8192,
-  responseMimeType: 'text/plain',
-};
+import apiRequest from '@/util/apiRequest';
 
 const Chat = () => {
+  const apiKeyRef = useRef<string>('');
+  useEffect(() => {
+    const fetchApiKey = async () => {
+      const res = await apiRequest.get('/ai');
+      if (res.status === 200) {
+        apiKeyRef.current = res.data.data;
+      }
+    };
+    fetchApiKey();
+  }, [])
+
+  const genAI = new GoogleGenerativeAI(apiKeyRef.current);
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-2.0-flash',
+  });
+
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 40,
+    maxOutputTokens: 8192,
+    responseMimeType: 'text/plain',
+  };
+
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
   const [chat, setChat] = useState<
@@ -200,17 +211,7 @@ const Chat = () => {
               className="w-24"
               variant="default"
             >
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending
-                </>
-              ) : (
-                <>
-                  <SendHorizontal className="mr-2 h-4 w-4" />
-                  Send
-                </>
-              )}
+              {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <SendHorizontal className="mr-2 h-4 w-4" />} Send
             </Button>
           </div>
         </CardContent>
