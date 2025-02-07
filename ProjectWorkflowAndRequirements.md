@@ -13,3 +13,5 @@ TypeScript
 # Special Features
 
 Aggresive Upload
+High SEO OPtimisation
+Hihgly Secure Backend 
