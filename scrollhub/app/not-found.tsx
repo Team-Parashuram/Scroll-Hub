@@ -1,11 +1,16 @@
+import NotFound from '@/components/NotFoundPage'
+import { Metadata } from 'next';
 import React from 'react'
 
-const NotFound = () => {
+const page = () => {
   return (
-    <div>
-      hi
-    </div>
+    <NotFound />
   )
 }
 
-export default NotFound
+export const metadata: Metadata = {
+  title: 'Page Not Found',
+};
+
+
+export default page

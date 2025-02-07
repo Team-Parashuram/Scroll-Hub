@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import type { Metadata } from 'next';
 import './globals.css';
 
 const geistSans = Geist({
@@ -17,16 +17,15 @@ export const metadata: Metadata = {
     template: '%s | ScrollHub ',
     default: 'ScrollHub | Made By Shardendu Mishra',
   },
-  description: 'A Shorts Platform Designed For Students, To keep Them Entartained And Sometimes Informed Between Those Long Study Sessions.',
+  description:
+    'A Shorts Platform Designed For Students, To keep Them Entartained And Sometimes Informed Between Those Long Study Sessions.',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className='dark'>
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
