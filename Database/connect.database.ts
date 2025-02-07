@@ -1,3 +1,5 @@
+
+
 const MONGO_URI = process.env.NEXT_PUBLIC_DB_URL as string;
 if (!MONGO_URI) {
   throw new Error(
