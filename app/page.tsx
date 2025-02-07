@@ -1,7 +1,11 @@
-import React from 'react';
+import Chat from '@/components/AI/Chat';
 
 const page = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Chat />
+    </div>
+  );
 };
 
 export default page;

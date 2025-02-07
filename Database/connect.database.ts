@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGO_URI = process.env.NEXT_PUBLIC_MONGODB_URI as string;
+const MONGO_URI = process.env.MONGODB_URI as string;
 if(!MONGO_URI){
     throw new Error("MongoDB URI must be defined");
 }
@@ -57,7 +57,7 @@ export {
 //     return;
 //   }
 //   try {
-//     const db = await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI as string);
+//     const db = await mongoose.connect(process.env.MONGODB_URI as string);
 //     connection.isConnected = db.connections[0].readyState;  
 //     console.log('Database connected successfully');
 //   }catch (error) {
