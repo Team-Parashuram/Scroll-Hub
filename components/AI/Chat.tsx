@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
@@ -20,20 +22,21 @@ import apiRequest from '@/util/apiRequest';
 
 const Chat = () => {
   const apiKeyRef = useRef<string>('');
+  const [genAI, setGenAI] = useState<GoogleGenerativeAI | null>(null);
+  const [model, setModel] = useState<any>(null);
+
   useEffect(() => {
     const fetchApiKey = async () => {
       const res = await apiRequest.get('/ai');
-      if (res.status === 200) {
+      if (res.status === 200 && res.data.data) {
         apiKeyRef.current = res.data.data;
+        const newGenAI = new GoogleGenerativeAI(apiKeyRef.current);
+        setGenAI(newGenAI);
+        setModel(newGenAI.getGenerativeModel({ model: 'gemini-2.0-flash' }));
       }
     };
     fetchApiKey();
   }, []);
-
-  const genAI = new GoogleGenerativeAI(apiKeyRef.current);
-  const model = genAI.getGenerativeModel({
-    model: 'gemini-2.0-flash',
-  });
 
   const generationConfig = {
     temperature: 1,
@@ -55,14 +58,15 @@ const Chat = () => {
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const chatSession = useMemo(
-    () =>
-      model.startChat({
+  const chatSession = useMemo(() => {
+    if (model) {
+      return model.startChat({
         generationConfig,
         history: [],
-      }),
-    [],
-  );
+      });
+    }
+    return null;
+  }, [model]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -71,7 +75,7 @@ const Chat = () => {
   }, [chat]);
 
   const handleSubmit = async () => {
-    if (!prompt.trim()) return;
+    if (!prompt.trim() || !chatSession) return;
 
     const userMessage = {
       id: Date.now(),
