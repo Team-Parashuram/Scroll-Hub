@@ -3,7 +3,7 @@
 ScrollHub provides the best scrolling experience with an algorithm designed to encourage productivity. With AI-driven recommendations and a seamless interface, users can effortlessly upload and watch short videos while staying focused.
 
 ## 🚀 Live Demo
-[ScrollHub - Deployed Version](#) *(Replace with actual deployed link)*
+[ScrollHub - Deployed Version](https://scroll-hub-shardendu-mishra.vercel.app/)
 
 ---
 
