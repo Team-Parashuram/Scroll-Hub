@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ScrollHub - The Ultimate Shorts Platform
 
-## Getting Started
+ScrollHub provides the best scrolling experience with an algorithm designed to encourage productivity. With AI-driven recommendations and a seamless interface, users can effortlessly upload and watch short videos while staying focused.
 
-First, run the development server:
+## 🚀 Live Demo
+[ScrollHub - Deployed Version](#) *(Replace with actual deployed link)*
 
+---
+
+## 🛠 Tech Stack
+- **Frontend:** Next.js, TypeScript, ShadCN, DaisyUI
+- **Backend:** Next-Auth, bcryptjs, mongoose, MongoDB
+- **Storage & Media:** ImageKit
+- **API & Testing:** Postman
+
+---
+
+## 🔥 Special Features
+- **Aggressive Upload:** Ultra-fast video uploads
+- **High SEO Optimization:** Get discovered easily
+- **Highly Secure Backend:** Ensuring top-notch security
+- **AI Model Integration:** Trained on datasets including social media wellness books for better content curation
+
+---
+
+## 📌 Core Functionalities
+✅ Upload videos  
+✅ Watch uploaded videos  
+✅ Seamless scrolling experience  
+✅ User authentication and authorization
+
+---
+
+## 🛠 Upcoming Features
+
+1. **Video Management**
+   - Users and admins can delete videos.
+   - Video reporting system: Auto-delete a post receiving more than 5 reports.
+   
+2. **Engagement Features**
+   - Like system (❤️).
+   - Comments on posts.
+   
+3. **Content Categorization & Discovery**
+   - Tags for videos based on topics.
+   - Smart algorithm curating feed based on interests.
+   - Tracking user watch history to refine recommendations.
+   - Users can manually select what type of content they want to see.
+   
+4. **User Interaction & Profiles**
+   - View uploads from specific users.
+   - User profile management: Edit self-profile & view others.
+   - Search functionality to find other users.
+   
+5. **Cross-Platform Experience**
+   - Mobile application development.
+   
+6. **Integrations**
+   - Integrate with **5Chan** (another project).
+   
+---
+
+## 📜 Contribution Guidelines
+Want to contribute? Follow these steps:
+1. Fork the repository.
+2. Clone it to your local system.
+3. Create a new branch.
+4. Implement your feature or fix an issue.
+5. Submit a Pull Request.
+
+---
+
+## 🏗 Installation & Setup
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/your-repo-url.git
+cd ScrollHub
+
+# Install dependencies
+yarn install  # or npm install
+
+# Run the development server
+yarn dev  # or npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 👨‍💻 Author
+**Shardendu Mishra**
+- [GitHub](https://github.com/MishraShardendu22)
+- [LinkedIn](https://www.linkedin.com/in/shardendumishra22/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Mihir Dagar**
+- [GitHub](https://github.com/DagarMihir)
+- [LinkedIn](https://www.linkedin.com/in/mihir-dagar-3b65b3347/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
