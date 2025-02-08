@@ -28,7 +28,7 @@ const Chat = () => {
       }
     };
     fetchApiKey();
-  }, [])
+  }, []);
 
   const genAI = new GoogleGenerativeAI(apiKeyRef.current);
   const model = genAI.getGenerativeModel({
@@ -211,7 +211,12 @@ const Chat = () => {
               className="w-24"
               variant="default"
             >
-              {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <SendHorizontal className="mr-2 h-4 w-4" />} Send
+              {loading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <SendHorizontal className="mr-2 h-4 w-4" />
+              )}{' '}
+              Send
             </Button>
           </div>
         </CardContent>

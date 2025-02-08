@@ -3,9 +3,9 @@ const nextConfig: import('next').NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "ik.imagekit.io",
-        port: "",
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+        port: '',
       },
     ],
   },
