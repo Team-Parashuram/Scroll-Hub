@@ -1,93 +1,109 @@
-import { HomeIcon, User2Icon } from 'lucide-react'
-import { signOut, useSession } from 'next-auth/react'
-import Link from 'next/link'
-import React from 'react'
-import { toast } from 'react-hot-toast'
+"use client";
 
-const SignOut = () => {
+import { HomeIcon, User2Icon, Upload, LogOut, ChevronDown } from 'lucide-react';
+import { signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
+import React from 'react';
+import { toast } from 'react-hot-toast';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+
+const Header = () => {
   const handleSignOut = async () => {
     try {
-      await signOut()
-      toast.success('Successfully signed out!')
+      await signOut();
+      toast.success('Successfully signed out!');
     } catch (error) {
-      toast.error('Error signing out')
-      console.error(error)
+      toast.error('Error signing out');
+      console.error(error);
     }
-  }
+  };
 
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
   return (
-    <div className="navbar bg-base-300 sticky top-0 z-40">
+    <header className="sticky top-0 z-40 w-full border-b border-purple-700/20 bg-purple-950/80 backdrop-blur-sm">
       <div className="container mx-auto">
-        <div className="flex-1 px-2 lg:flex-none">
-          <Link
-            href="/"
-            className="btn btn-ghost text-xl gap-2 normal-case font-bold"
-            prefetch={true}
-            onClick={() =>
-              toast.error('Welcome to ImageKit ReelsPro')
-            }
-          >
-            <HomeIcon className="w-5 h-5" />
-            ImageKit ReelsPro
-          </Link>
-        </div>
-        <div className="flex flex-1 justify-end px-2">
-          <div className="flex items-stretch gap-2">
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                <User2Icon className="w-5 h-5" />
-              </div>
-              <ul tabIndex={0} className="dropdown-content z-[1] shadow-lg bg-base-100 rounded-box w-64 mt-4 py-2">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <Link
+              href="/"
+              className="flex items-center space-x-2 text-purple-100 hover:text-purple-200 transition-colors"
+              prefetch={true}
+            >
+              <HomeIcon className="h-5 w-5" />
+              <span className="text-xl font-bold">ScrollHub</span>
+            </Link>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            {session && (
+              <Link
+                href="/upload"
+                className="hidden md:flex items-center space-x-2 text-purple-200 hover:text-purple-100 transition-colors"
+              >
+                <Upload className="h-4 w-4" />
+                <span>Upload</span>
+              </Link>
+            )}
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  className="h-9 w-9 p-0 text-purple-200 hover:text-purple-100 hover:bg-purple-800/50"
+                >
+                  <User2Icon className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                className="w-56 bg-purple-900/95 backdrop-blur-sm border-purple-700/50 text-purple-100"
+                align="end"
+              >
                 {session ? (
                   <>
-                    <li className="px-4 py-1">
-                      <span className="text-sm opacity-70">{session.user?.email?.split('@')[0]}</span>
-                    </li>
-                    <div className="divider my-1"></div>
-
-                    <li>
-                      <Link
-                        href="/upload"
-                        className="px-4 py-2 hover:bg-base-200 block w-full"
-                        onClick={() =>
-                          toast.error('Welcome to Admin Dashboard')
-                        }
-                      >
-                        Video Upload
-                      </Link>
-                    </li>
-
-                    <li>
-                      <button
-                        onClick={handleSignOut}
-                        className="px-4 py-2 text-error hover:bg-base-200 w-full text-left"
-                      >
-                        Sign Out
-                      </button>
-                    </li>
+                    <DropdownMenuLabel className="text-purple-300">
+                      {session.user?.email?.split('@')[0]}
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator className="bg-purple-700/50" />
+                    <DropdownMenuItem 
+                      className="hover:bg-purple-800/50 focus:bg-purple-800/50 cursor-pointer"
+                      asChild
+                    >
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      className="text-red-400 hover:text-red-300 hover:bg-purple-800/50 focus:bg-purple-800/50 cursor-pointer"
+                      onClick={handleSignOut}
+                    >
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Sign Out</span>
+                    </DropdownMenuItem>
                   </>
                 ) : (
-                  <li>
-                    <Link
-                      href="/login"
-                      className="px-4 py-2 hover:bg-base-200 block w-full"
-                      onClick={() =>
-                        toast.error('Please sign in to continue')
-                      }
-                    >
-                      Login
+                  <DropdownMenuItem 
+                    className="hover:bg-purple-800/50 focus:bg-purple-800/50 cursor-pointer"
+                    asChild
+                  >
+                    <Link href="/login" className="flex items-center">
+                      <ChevronDown className="mr-2 h-4 w-4" />
+                      <span>Login</span>
                     </Link>
-                  </li>
+                  </DropdownMenuItem>
                 )}
-              </ul>
-            </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>
-    </div>
-  )
-}
+    </header>
+  );
+};
 
-export default SignOut
+export default Header;

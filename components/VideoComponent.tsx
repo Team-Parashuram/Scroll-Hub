@@ -1,44 +1,50 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
 import { IVideo } from "@/Model/video.model";
 import { IKVideo } from "imagekitio-next";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function VideoComponent({ video }: { video: IVideo }) {
+  const [isLoading, setIsLoading] = React.useState(true);
+
   return (
-    <div className="card bg-base-100 shadow hover:shadow-lg transition-all duration-300">
-      <figure className="relative px-4 pt-4">
-        <Link href={`/videos/${video._id}`} className="relative group w-full">
-          <div
-            className="rounded-xl overflow-hidden relative w-full"
-            style={{ aspectRatio: "9/16" }}
-          >
+    <Card className="group overflow-hidden bg-purple-900/20 backdrop-blur-sm border-purple-700/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/20 w-full max-w-xs mx-auto">
+      <div 
+        className="relative w-full"
+        style={{ aspectRatio: "9/16", maxHeight: "360px" }}
+      >
+          <div className="relative w-full h-full rounded-t-lg overflow-hidden">
+            {isLoading && (
+              <Skeleton className="absolute inset-0 bg-purple-800/50" />
+            )}
+            
             <IKVideo
               path={video.videoUrl}
               transformation={[
                 {
-                  height: "1920",
-                  width: "1080",
-                },
+                  height: "640",
+                  width: "360",
+                }
               ]}
               controls={video.controls}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              onLoad={() => setIsLoading(false)}
             />
           </div>
-        </Link>
-      </figure>
+      </div>
 
-      <div className="card-body p-4">
-        <Link
-          href={`/videos/${video._id}`}
-          className="hover:opacity-80 transition-opacity"
-        >
-          <h2 className="card-title text-lg">{video.title}</h2>
+      <CardContent className="p-3">
+        <Link href={`/videos/${video._id}`}>
+          <h2 className="text-base font-semibold text-purple-100 line-clamp-1 hover:text-purple-300 transition-colors">
+            {video.title}
+          </h2>
         </Link>
-
-        <p className="text-sm text-base-content/70 line-clamp-2">
+        
+        <p className="mt-1.5 text-sm text-purple-200/80 line-clamp-2">
           {video.description}
         </p>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
