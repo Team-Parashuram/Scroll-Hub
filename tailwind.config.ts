@@ -3,6 +3,10 @@ import type { Config } from 'tailwindcss';
 
 export default {
   darkMode: ['class'],
+  daisyui: {
+    themes: ["dark"],
+    darkTheme: "dark",
+  },
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
