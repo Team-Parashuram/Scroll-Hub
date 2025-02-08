@@ -35,7 +35,6 @@ ScrollHub provides the best scrolling experience with an algorithm designed to e
 ## 🛠 Upcoming Features
 
 1. **Video Management**
-   - Users and admins can delete videos.
    - Video reporting system: Auto-delete a post receiving more than 5 reports.
    
 2. **Engagement Features**
