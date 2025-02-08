@@ -20,6 +20,7 @@ ScrollHub provides the best scrolling experience with an algorithm designed to e
 - **High SEO Optimization:** Get discovered easily
 - **Highly Secure Backend:** Ensuring top-notch security
 - **AI Model Integration:** Trained on datasets including social media wellness books for better content curation
+- **Delete Video:** Users Can Delete Video They Post
 
 ---
 
