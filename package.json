@@ -54,7 +54,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.5.2",
     "framer-motion": "^12.4.1",
-    "imagekit": "^4.1.4",
+    "imagekit": "^6.0.0",
     "imagekitio-next": "^1.0.1",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.474.0",

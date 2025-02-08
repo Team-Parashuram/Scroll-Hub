@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import { IKUpload } from 'imagekitio-next';
@@ -93,12 +94,6 @@ export default function FileUpload({
 
       {uploading && (
         <div className="mt-2">
-          <div className="h-2 bg-gray-200 rounded-full">
-            <div
-              className="h-full bg-blue-500 rounded-full transition-all"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
           <Loader2 className="animate-spin mt-2 mx-auto" />
         </div>
       )}
