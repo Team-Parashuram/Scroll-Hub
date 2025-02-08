@@ -1,6 +1,6 @@
 'use client';
 
-import { HomeIcon, User2Icon, Upload, LogOut, ChevronDown, Rocket, Menu } from 'lucide-react';
+import { HomeIcon, User2Icon, Upload, LogOut, ChevronDown, Rocket, Menu, Loader2 } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -90,7 +90,7 @@ const Header = () => {
               >
                 {isLoading ? (
                   <DropdownMenuLabel className="text-purple-300">
-                    Loading...
+                    <Loader2 />
                   </DropdownMenuLabel>
                 ) : session ? (
                   <>

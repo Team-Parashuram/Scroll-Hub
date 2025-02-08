@@ -5,7 +5,6 @@ import { IKUploadResponse } from 'imagekitio-next/dist/types/components/IKUpload
 import FileUpload from '@/app/component/FileUpload';
 import { apiClient } from '@/lib/apiClient';
 import { Loader2 } from 'lucide-react';
-import CosmicLoader from './Loader';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -132,7 +131,6 @@ export default function VideoUploadForm() {
         {loading ? (
           <div className="flex items-center justify-center space-x-2">
             <Loader2 className="w-4 h-4 animate-spin" />
-            <CosmicLoader />
           </div>
         ) : (
           'Publish Video'

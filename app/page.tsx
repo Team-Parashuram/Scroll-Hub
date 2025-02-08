@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import VideoFeed from '@/components/VideoFeed';
 import { apiClient } from '@/lib/apiClient';
-import { Loader2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import CosmicLoader from '@/components/Loader';
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
@@ -56,8 +56,7 @@ export default function Home() {
         {isLoading && (
           <div className="flex items-center justify-center min-h-[200px]">
             <div className="flex flex-col items-center space-y-4">
-              <Loader2 className="h-8 w-8 text-purple-400 animate-spin" />
-              <p className="text-purple-200">Loading amazing content...</p>
+              <CosmicLoader />
             </div>
           </div>
         )}
