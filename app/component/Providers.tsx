@@ -9,11 +9,11 @@ const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT!;
 export default function Providers({ children }: { children: React.ReactNode }) {
   const authenticator = async () => {
     try {
-      console.log("Checkpoint-1")
+      console.log('Checkpoint-1');
       const res = await fetch(
         process.env.NEXT_PUBLIC_BASE_URL + '/imagekitauth',
       );
-      console.log(res)
+      console.log(res);
       if (!res.ok) throw new Error('Failed to authenticate');
       return res.json();
     } catch (error) {

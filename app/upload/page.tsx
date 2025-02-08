@@ -1,9 +1,15 @@
-"use client";
+'use client';
 
-import { Upload, Video  } from "lucide-react";
-import VideoUploadForm from "@/components/VideoUploadForm";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import Header from "@/components/Header";
+import { Upload, Video } from 'lucide-react';
+import VideoUploadForm from '@/components/VideoUploadForm';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import Header from '@/components/Header';
 
 export default function VideoUploadPage() {
   return (
@@ -43,7 +49,9 @@ export default function VideoUploadPage() {
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="bg-purple-900/20 backdrop-blur-sm border-purple-700/50">
               <CardHeader>
-                <CardTitle className="text-lg text-purple-100">Upload Guidelines</CardTitle>
+                <CardTitle className="text-lg text-purple-100">
+                  Upload Guidelines
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-purple-200">
                 <ul className="space-y-2">
@@ -65,7 +73,9 @@ export default function VideoUploadPage() {
 
             <Card className="bg-purple-900/20 backdrop-blur-sm border-purple-700/50">
               <CardHeader>
-                <CardTitle className="text-lg text-purple-100">Tips for Better Reels</CardTitle>
+                <CardTitle className="text-lg text-purple-100">
+                  Tips for Better Reels
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-purple-200">
                 <ul className="space-y-2">

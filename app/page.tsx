@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
-import Header from "@/components/Header";
-import VideoFeed from "@/components/VideoFeed";
-import { apiClient } from "@/lib/apiClient";
-import { Loader2 } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import React, { useEffect, useState } from 'react';
+import Header from '@/components/Header';
+import VideoFeed from '@/components/VideoFeed';
+import { apiClient } from '@/lib/apiClient';
+import { Loader2 } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
@@ -21,8 +21,8 @@ export default function Home() {
         const res: any = await apiClient.getVideos();
         setVideos(res.data);
       } catch (error) {
-        console.error("Error fetching videos:", error);
-        setError("Failed to load videos. Please try again later.");
+        console.error('Error fetching videos:', error);
+        setError('Failed to load videos. Please try again later.');
       } finally {
         setIsLoading(false);
       }
@@ -64,7 +64,10 @@ export default function Home() {
 
         {/* Error State */}
         {error && (
-          <Alert variant="destructive" className="mb-8 bg-red-900/20 border-red-700/50">
+          <Alert
+            variant="destructive"
+            className="mb-8 bg-red-900/20 border-red-700/50"
+          >
             <AlertDescription className="text-red-200">
               {error}
             </AlertDescription>

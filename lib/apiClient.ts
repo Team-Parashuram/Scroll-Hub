@@ -1,22 +1,23 @@
-import { IVideo } from "@/Model/video.model";
+import { IVideo } from '@/Model/video.model';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type VideoFormData = Omit<IVideo, "_id">;
+export type VideoFormData = Omit<IVideo, '_id'>;
 
 type FetchOptions = {
-  method?: "GET" | "POST" | "PUT" | "DELETE";
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   body?: any;
   headers?: Record<string, string>;
 };
 
-class ApiClient {private async fetch<T>(
-        endpoint: string,
-        options: FetchOptions = {}
-    ): Promise<T> {
-    const { method = "GET", body, headers = {} } = options;
+class ApiClient {
+  private async fetch<T>(
+    endpoint: string,
+    options: FetchOptions = {},
+  ): Promise<T> {
+    const { method = 'GET', body, headers = {} } = options;
 
     const defaultHeaders = {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       ...headers,
     };
 
@@ -34,7 +35,7 @@ class ApiClient {private async fetch<T>(
   }
 
   async getVideos() {
-    return this.fetch("/videos");
+    return this.fetch('/videos');
   }
 
   async getVideo(id: string) {
@@ -42,8 +43,8 @@ class ApiClient {private async fetch<T>(
   }
 
   async createVideo(videoData: VideoFormData) {
-    return this.fetch<IVideo>("/videos", {
-      method: "POST",
+    return this.fetch<IVideo>('/videos', {
+      method: 'POST',
       body: videoData,
     });
   }

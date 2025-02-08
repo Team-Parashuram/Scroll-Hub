@@ -1,25 +1,28 @@
-"use client"
+'use client';
 
-import { useState } from "react";
-import { IKUploadResponse } from "imagekitio-next/dist/types/components/IKUpload/props";
-import FileUpload from "@/app/component/FileUpload";
-import { apiClient } from "@/lib/apiClient";
-import { Loader2 } from "lucide-react";
-import CosmicLoader from "./Loader";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { useState } from 'react';
+import { IKUploadResponse } from 'imagekitio-next/dist/types/components/IKUpload/props';
+import FileUpload from '@/app/component/FileUpload';
+import { apiClient } from '@/lib/apiClient';
+import { Loader2 } from 'lucide-react';
+import CosmicLoader from './Loader';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 
 export default function VideoUploadForm() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [videoUrl, setVideoUrl] = useState("");
-  const [thumbnailUrl, setThumbnailUrl] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [videoUrl, setVideoUrl] = useState('');
+  const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [errors, setErrors] = useState<{ title?: string; description?: string }>({});
+  const [errors, setErrors] = useState<{
+    title?: string;
+    description?: string;
+  }>({});
 
   const handleUploadSuccess = (response: IKUploadResponse) => {
     setVideoUrl(response.filePath);
@@ -32,8 +35,8 @@ export default function VideoUploadForm() {
 
   const validateForm = () => {
     const newErrors: { title?: string; description?: string } = {};
-    if (!title) newErrors.title = "Title is required";
-    if (!description) newErrors.description = "Description is required";
+    if (!title) newErrors.title = 'Title is required';
+    if (!description) newErrors.description = 'Description is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -44,11 +47,16 @@ export default function VideoUploadForm() {
 
     setLoading(true);
     try {
-      await apiClient.createVideo({ title, description, videoUrl, thumbnailUrl });
-      setTitle("");
-      setDescription("");
-      setVideoUrl("");
-      setThumbnailUrl("");
+      await apiClient.createVideo({
+        title,
+        description,
+        videoUrl,
+        thumbnailUrl,
+      });
+      setTitle('');
+      setDescription('');
+      setVideoUrl('');
+      setThumbnailUrl('');
       setUploadProgress(0);
     } catch (error) {
       console.error(error);
@@ -69,13 +77,11 @@ export default function VideoUploadForm() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className={`bg-purple-900/20 border-purple-700/50 text-purple-100 placeholder:text-purple-400/50 focus:ring-purple-500/50 ${
-            errors.title ? "border-red-500/50 focus:ring-red-500/50" : ""
+            errors.title ? 'border-red-500/50 focus:ring-red-500/50' : ''
           }`}
           placeholder="Enter video title"
         />
-        {errors.title && (
-          <p className="text-red-400 text-sm">{errors.title}</p>
-        )}
+        {errors.title && <p className="text-red-400 text-sm">{errors.title}</p>}
       </div>
 
       <div className="space-y-2">
@@ -87,7 +93,7 @@ export default function VideoUploadForm() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className={`bg-purple-900/20 border-purple-700/50 text-purple-100 placeholder:text-purple-400/50 focus:ring-purple-500/50 min-h-[100px] ${
-            errors.description ? "border-red-500/50 focus:ring-red-500/50" : ""
+            errors.description ? 'border-red-500/50 focus:ring-red-500/50' : ''
           }`}
           placeholder="Enter video description"
         />
@@ -97,9 +103,7 @@ export default function VideoUploadForm() {
       </div>
 
       <div className="space-y-2">
-        <Label className="text-purple-200">
-          Upload Video
-        </Label>
+        <Label className="text-purple-200">Upload Video</Label>
         <div className="bg-purple-900/20 border border-purple-700/50 rounded-lg p-4">
           <FileUpload
             fileType="video"
@@ -131,7 +135,7 @@ export default function VideoUploadForm() {
             <CosmicLoader />
           </div>
         ) : (
-          "Publish Video"
+          'Publish Video'
         )}
       </Button>
     </form>

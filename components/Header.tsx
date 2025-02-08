@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { HomeIcon, User2Icon, Upload, LogOut, ChevronDown } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
@@ -12,8 +12,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const handleSignOut = async () => {
@@ -56,14 +56,14 @@ const Header = () => {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   className="h-9 w-9 p-0 text-purple-200 hover:text-purple-100 hover:bg-purple-800/50"
                 >
                   <User2Icon className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent 
+              <DropdownMenuContent
                 className="w-56 bg-purple-900/95 backdrop-blur-sm border-purple-700/50 text-purple-100"
                 align="end"
               >
@@ -73,12 +73,11 @@ const Header = () => {
                       {session.user?.email?.split('@')[0]}
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator className="bg-purple-700/50" />
-                    <DropdownMenuItem 
+                    <DropdownMenuItem
                       className="hover:bg-purple-800/50 focus:bg-purple-800/50 cursor-pointer"
                       asChild
-                    >
-                    </DropdownMenuItem>
-                    <DropdownMenuItem 
+                    ></DropdownMenuItem>
+                    <DropdownMenuItem
                       className="text-red-400 hover:text-red-300 hover:bg-purple-800/50 focus:bg-purple-800/50 cursor-pointer"
                       onClick={handleSignOut}
                     >
@@ -87,7 +86,7 @@ const Header = () => {
                     </DropdownMenuItem>
                   </>
                 ) : (
-                  <DropdownMenuItem 
+                  <DropdownMenuItem
                     className="hover:bg-purple-800/50 focus:bg-purple-800/50 cursor-pointer"
                     asChild
                   >

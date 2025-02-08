@@ -1,5 +1,5 @@
-import { IVideo } from "@/Model/video.model";
-import VideoComponent from "./VideoComponent";
+import { IVideo } from '@/Model/video.model';
+import VideoComponent from './VideoComponent';
 
 export default function VideoFeed({ videos }: { videos: IVideo[] }) {
   return (

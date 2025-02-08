@@ -1,28 +1,34 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { Mail, Lock, Home, ArrowRight, LogIn } from "lucide-react";
-import toast from "react-hot-toast";
-import CosmicLoader from "@/components/Loader";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import React, { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { Mail, Lock, Home, ArrowRight, LogIn } from 'lucide-react';
+import toast from 'react-hot-toast';
+import CosmicLoader from '@/components/Loader';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 const Page = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
-      const result = await signIn("credentials", {
+      const result = await signIn('credentials', {
         email,
         password,
         redirect: false,
@@ -31,12 +37,12 @@ const Page = () => {
       if (result?.error) {
         toast.error(result.error);
       } else {
-        toast.success("Login successful!");
-        router.push("/");
+        toast.success('Login successful!');
+        router.push('/');
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to login");
+      toast.error('Failed to login');
     } finally {
       setLoading(false);
     }
@@ -48,12 +54,18 @@ const Page = () => {
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
       <nav className="p-4 bg-purple-900/20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2 text-purple-100 hover:text-purple-200 transition-colors">
+          <Link
+            href="/"
+            className="flex items-center space-x-2 text-purple-100 hover:text-purple-200 transition-colors"
+          >
             <Home size={24} />
             <span className="font-semibold text-lg">Cosmic App</span>
           </Link>
           <div className="space-x-4">
-            <Link href="/register" className="text-purple-200 hover:text-purple-100 transition-colors">
+            <Link
+              href="/register"
+              className="text-purple-200 hover:text-purple-100 transition-colors"
+            >
               Register
             </Link>
           </div>
@@ -65,7 +77,9 @@ const Page = () => {
           <CardHeader className="space-y-1">
             <div className="flex items-center justify-center space-x-2">
               <LogIn className="h-8 w-8 text-purple-300" />
-              <CardTitle className="text-2xl text-purple-100">Welcome Back</CardTitle>
+              <CardTitle className="text-2xl text-purple-100">
+                Welcome Back
+              </CardTitle>
             </div>
             <CardDescription className="text-purple-200">
               Enter your credentials to access your account
@@ -100,8 +114,8 @@ const Page = () => {
                 </div>
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-purple-600 hover:bg-purple-700 text-white"
               >
                 Sign In
@@ -110,7 +124,10 @@ const Page = () => {
 
               <div className="text-center text-purple-200">
                 Don&#39;t have an account?{' '}
-                <Link href="/register" className="text-purple-300 hover:text-purple-200 underline">
+                <Link
+                  href="/register"
+                  className="text-purple-300 hover:text-purple-200 underline"
+                >
                   Register
                 </Link>
               </div>
