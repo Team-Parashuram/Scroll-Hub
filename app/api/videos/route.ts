@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { ConnectToDatabase } from '@/Database/connect.database';
 import { authOptions } from '@/lib/auth';
 import Video, { IVideo } from '@/Model/video.model';
@@ -29,6 +30,10 @@ export async function POST(request: NextRequest) {
 
     await ConnectToDatabase();
     const body: IVideo = await request.json();
+    body.userId = new mongoose.Types.ObjectId(session.user.id);
+
+    console.log(body);
+    console.log(session);
 
     if (
       !body.title ||
@@ -56,8 +61,31 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: 'Failed to fetch videos' },
+      { error: 'Failed to create video' },
       { status: 500 },
     );
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return sendResponse(401, "Unauthorized");
+    }
+    console.log(session)
+
+    await ConnectToDatabase();
+
+    const id = request.nextUrl.searchParams.get("id");
+    if (!id) {
+      return sendResponse(400, "Video id is required");
+    }
+
+    await Video.findByIdAndDelete(id);
+    return sendResponse(200, "Video deleted successfully");
+  } catch (error) {
+    console.error(error);
+    return sendResponse(500, "Internal Server Error");
   }
 }

@@ -38,8 +38,10 @@ class ApiClient {
     return this.fetch('/videos');
   }
 
-  async getVideo(id: string) {
-    return this.fetch<IVideo>(`/videos/${id}`);
+  async deleteVideo(id: string) {
+    return this.fetch(`/videos?id=${id}`, {
+      method: 'DELETE',
+    });
   }
 
   async createVideo(videoData: VideoFormData) {
