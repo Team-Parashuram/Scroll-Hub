@@ -33,61 +33,71 @@ ScrollHub provides the best scrolling experience with an algorithm designed to e
 ---
 
 ## 🛠 Upcoming Features
+# Video Management Platform
 
-# Video Management
+## 1. Image Features
 
-1.) **Image Features**
-   ## Video Reporting System
-   - Auto-delete a post receiving more than 5 reports.
-   
-   # Professional Media Editor
-   
-   ## Compress Image
-   - Compress JPG, PNG, SVG, and GIFs while saving space and maintaining quality.
-   
-   ## Resize Image
-   - Define your dimensions by percent or pixel and resize your JPG, PNG, SVG, and GIF images.
-   
-   ## Crop Image
-   - Crop JPG, PNG, or GIFs with ease.
-   - Choose pixels to define your rectangle or use our visual editor.
-   
-   ## Upscale Image
-   - Upscale images and improve their quality.
-   
-   ## Blur Image
-   - Apply a blur effect to your images.
-   
-   ## Rotate Image
-   - Rotate images with precision.
-   
-   ## Photo Editor
-   - Edit your photos with various tools.
-   
-   ## Convert from JPG
-   - Convert JPG images to other formats.
-   
-2. **Engagement Features**
-   - Like system (❤️).
-   - Comments on posts.
-   
-3. **Content Categorization & Discovery**
-   - Tags for videos based on topics.
-   - Smart algorithm curating feed based on interests.
-   - Tracking user watch history to refine recommendations.
-   - Users can manually select what type of content they want to see.
-   
-4. **User Interaction & Profiles**
-   - View uploads from specific users.
-   - User profile management: Edit self-profile & view others.
-   - Search functionality to find other users.
-   
-5. **Cross-Platform Experience**
-   - Mobile application development.
-   
-6. **Integrations**
-   - Integrate with **5Chan** (another project).
-   
+### Video Reporting System
+- Auto-delete a post receiving more than 5 reports.
+
+## 2. Professional Media Editor
+
+### Compress Image
+- Compress JPG, PNG, SVG, and GIFs while saving space and maintaining quality.
+
+### Resize Image
+- Resize JPG, PNG, SVG, and GIF images by defining dimensions in percent or pixels.
+
+### Crop Image
+- Crop JPG, PNG, or GIFs with ease.
+- Use pixel-defined rectangles or a visual editor.
+
+### Upscale Image
+- Enhance image resolution and quality.
+
+### Blur Image
+- Apply a blur effect to images.
+
+### Rotate Image
+- Rotate images with precision.
+
+### Photo Editor
+- Edit photos with various tools.
+
+### Convert from JPG
+- Convert JPG images to other formats.
+
+---
+
+## 3. Engagement Features
+- Like system (❤️) for user interaction.
+- Commenting system for discussions on posts.
+
+---
+
+## 4. Content Categorization & Discovery
+- Tags for videos based on topics.
+- Smart algorithm curating personalized feeds based on interests.
+- Tracking user watch history to refine recommendations.
+- Users can manually select preferred content categories.
+
+---
+
+## 5. User Interaction & Profiles
+- View uploads from specific users.
+- Profile management: Edit your profile and explore others.
+- Search functionality to find users easily.
+
+---
+
+## 6. Cross-Platform Experience
+- Mobile application development for seamless accessibility.
+
+---
+
+## 7. Integrations
+- Integration with **5Chan** (another project).
+
 ---
 
 ## 📜 Contribution Guidelines
