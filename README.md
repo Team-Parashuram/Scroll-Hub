@@ -34,8 +34,38 @@ ScrollHub provides the best scrolling experience with an algorithm designed to e
 
 ## 🛠 Upcoming Features
 
-1. **Video Management**
-   - Video reporting system: Auto-delete a post receiving more than 5 reports.
+# Video Management
+
+1.) **Image Features**
+   ## Video Reporting System
+   - Auto-delete a post receiving more than 5 reports.
+   
+   # Professional Media Editor
+   
+   ## Compress Image
+   - Compress JPG, PNG, SVG, and GIFs while saving space and maintaining quality.
+   
+   ## Resize Image
+   - Define your dimensions by percent or pixel and resize your JPG, PNG, SVG, and GIF images.
+   
+   ## Crop Image
+   - Crop JPG, PNG, or GIFs with ease.
+   - Choose pixels to define your rectangle or use our visual editor.
+   
+   ## Upscale Image
+   - Upscale images and improve their quality.
+   
+   ## Blur Image
+   - Apply a blur effect to your images.
+   
+   ## Rotate Image
+   - Rotate images with precision.
+   
+   ## Photo Editor
+   - Edit your photos with various tools.
+   
+   ## Convert from JPG
+   - Convert JPG images to other formats.
    
 2. **Engagement Features**
    - Like system (❤️).
