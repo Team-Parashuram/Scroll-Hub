@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Mail, Lock, Home, ArrowRight, LogIn } from 'lucide-react';
+import { Mail, Lock, ArrowRight, LogIn } from 'lucide-react';
 import toast from 'react-hot-toast';
 import CosmicLoader from '@/components/Loader';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import Header from '@/components/Header';
 
 const Page = () => {
   const [email, setEmail] = useState('');
@@ -52,25 +53,7 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
-      <nav className="p-4 bg-purple-900/20 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link
-            href="/"
-            className="flex items-center space-x-2 text-purple-100 hover:text-purple-200 transition-colors"
-          >
-            <Home size={24} />
-            <span className="font-semibold text-lg">Cosmic App</span>
-          </Link>
-          <div className="space-x-4">
-            <Link
-              href="/register"
-              className="text-purple-200 hover:text-purple-100 transition-colors"
-            >
-              Register
-            </Link>
-          </div>
-        </div>
-      </nav>
+    <Header />
 
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md bg-purple-900/20 backdrop-blur-sm border-purple-700/50">

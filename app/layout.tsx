@@ -1,6 +1,4 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Analytics } from "@vercel/analytics/react"
 import Providers from './component/Providers';
 import { Toaster } from 'react-hot-toast';
 import type { Metadata } from 'next';
@@ -32,8 +30,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SpeedInsights/>
-        <Analytics/>
         <Providers>
           <Toaster
             position="top-left"

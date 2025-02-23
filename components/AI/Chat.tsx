@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import apiRequest from '@/util/apiRequest';
+import Header from '../Header';
 
 const Chat = () => {
   const apiKeyRef = useRef<string>('');
@@ -144,87 +145,90 @@ const Chat = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-8 p-4">
-      <Card className="w-full shadow-2xl border-2 border-primary/10">
-        <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b border-border flex flex-row items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <MessageCircle className="text-primary" />
-            <CardTitle className="text-primary">Scroll-Hub AI</CardTitle>
-          </div>
-          {chat.length > 0 && (
-            <Button
-              variant="destructive"
-              size="sm"
-              onClick={clearChat}
-              className="opacity-70 hover:opacity-100 transition-opacity"
+    <div>
+      <Header />
+      <div className="max-w-xl mx-auto mt-8 p-4">
+        <Card className="w-full shadow-2xl border-2 border-primary/10">
+          <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b border-border flex flex-row items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <MessageCircle className="text-primary" />
+              <CardTitle className="text-primary">Scroll-Hub AI</CardTitle>
+            </div>
+            {chat.length > 0 && (
+              <Button
+                variant="destructive"
+                size="sm"
+                onClick={clearChat}
+                className="opacity-70 hover:opacity-100 transition-opacity"
+              >
+                Clear Chat
+              </Button>
+            )}
+          </CardHeader>
+          <CardContent className="p-4">
+            <div
+              ref={scrollRef}
+              className="h-[400px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-track-secondary/10 scrollbar-thumb-primary/50"
             >
-              Clear Chat
-            </Button>
-          )}
-        </CardHeader>
-        <CardContent className="p-4">
-          <div
-            ref={scrollRef}
-            className="h-[400px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-track-secondary/10 scrollbar-thumb-primary/50"
-          >
-            <AnimatePresence>
-              {chat.map((item) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, x: item.type === 'user' ? 50 : -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, type: 'spring', stiffness: 100 }}
-                  className={`flex items-center ${
-                    item.type === 'user' ? 'justify-end' : 'justify-start'
-                  } space-x-2`}
-                >
-                  {item.type === 'ai' && <Bot className="text-secondary" />}
-                  <div
-                    className={`
-                      p-3 rounded-xl max-w-[80%] shadow-sm
-                      ${
-                        item.type === 'user'
-                          ? 'bg-primary/20 text-primary-foreground'
-                          : 'bg-secondary/20 text-secondary-foreground'
-                      }
-                    `}
+              <AnimatePresence>
+                {chat.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, x: item.type === 'user' ? 50 : -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3, type: 'spring', stiffness: 100 }}
+                    className={`flex items-center ${
+                      item.type === 'user' ? 'justify-end' : 'justify-start'
+                    } space-x-2`}
                   >
-                    {item.message}
-                  </div>
-                  {item.type === 'user' && (
-                    <UserCircle className="text-primary" />
-                  )}
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+                    {item.type === 'ai' && <Bot className="text-secondary" />}
+                    <div
+                      className={`
+                        p-3 rounded-xl max-w-[80%] shadow-sm
+                        ${
+                          item.type === 'user'
+                            ? 'bg-primary/20 text-primary-foreground'
+                            : 'bg-secondary/20 text-secondary-foreground'
+                        }
+                      `}
+                    >
+                      {item.message}
+                    </div>
+                    {item.type === 'user' && (
+                      <UserCircle className="text-primary" />
+                    )}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
 
-          <div className="mt-4 flex space-x-2">
-            <Input
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Ask about social media wellness..."
-              disabled={loading}
-              className="flex-grow"
-            />
-            <Button
-              onClick={handleSubmit}
-              disabled={loading || !prompt.trim()}
-              className="w-24"
-              variant="default"
-            >
-              {loading ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                <SendHorizontal className="mr-2 h-4 w-4" />
-              )}{' '}
-              Send
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+            <div className="mt-4 flex space-x-2">
+              <Input
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Ask about social media wellness..."
+                disabled={loading}
+                className="flex-grow"
+              />
+              <Button
+                onClick={handleSubmit}
+                disabled={loading || !prompt.trim()}
+                className="w-24"
+                variant="default"
+              >
+                {loading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <SendHorizontal className="mr-2 h-4 w-4" />
+                )}{' '}
+                Send
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };

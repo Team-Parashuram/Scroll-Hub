@@ -14,9 +14,7 @@ import Header from '@/components/Header';
 export default function VideoUploadPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
-      <nav className="p-4 bg-purple-900/20 backdrop-blur-sm">
-        <Header />
-      </nav>
+      <Header />
 
       {/* Main Content */}
       <div className="flex-1 container mx-auto px-4 py-8">

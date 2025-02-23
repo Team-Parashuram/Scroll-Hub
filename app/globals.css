@@ -54,48 +54,48 @@ body {
 
 @layer base {
   .dark {
-    --background: 260 30% 10%;
-    --foreground: 250 30% 95%;
+    --background: 280 30% 8%;
+    --foreground: 250 30% 98%;
 
-    --card: 260 30% 15%;
-    --card-foreground: 250 30% 95%;
+    --card: 280 30% 12%;
+    --card-foreground: 250 30% 98%;
 
-    --popover: 260 30% 15%;
-    --popover-foreground: 250 30% 95%;
+    --popover: 280 30% 12%;
+    --popover-foreground: 250 30% 98%;
 
-    --primary: 270 80% 60%;
+    --primary: 270 85% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 280 70% 55%;
+    --secondary: 280 75% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 260 30% 20%;
-    --muted-foreground: 250 30% 80%;
+    --muted: 280 30% 15%;
+    --muted-foreground: 250 30% 85%;
 
-    --accent: 280 70% 55%;
+    --accent: 280 75% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 350 70% 50%;
+    --destructive: 350 75% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 260 30% 25%;
-    --input: 260 30% 25%;
-    --ring: 270 80% 65%;
+    --border: 280 30% 20%;
+    --input: 280 30% 20%;
+    --ring: 270 85% 70%;
 
-    --chart-1: 270 80% 60%;
-    --chart-2: 280 70% 55%;
-    --chart-3: 260 60% 50%;
-    --chart-4: 250 70% 55%;
-    --chart-5: 290 60% 60%;
+    --chart-1: 270 85% 65%;
+    --chart-2: 280 75% 60%;
+    --chart-3: 260 65% 55%;
+    --chart-4: 250 75% 60%;
+    --chart-5: 290 65% 65%;
 
-    --sidebar-background: 260 30% 10%;
-    --sidebar-foreground: 250 30% 95%;
-    --sidebar-primary: 270 80% 60%;
+    --sidebar-background: 280 30% 8%;
+    --sidebar-foreground: 250 30% 98%;
+    --sidebar-primary: 270 85% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 280 70% 55%;
+    --sidebar-accent: 280 75% 60%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 260 30% 25%;
-    --sidebar-ring: 270 80% 65%;
+    --sidebar-border: 280 30% 20%;
+    --sidebar-ring: 270 85% 70%;
   }
 }
 
@@ -104,6 +104,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
