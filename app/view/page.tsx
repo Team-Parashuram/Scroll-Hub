@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { apiClient } from '@/lib/apiClient';
 import CosmicLoader from '@/components/Loader';
 import { IKVideo } from 'imagekitio-next';
-import Header from '@/components/Header';
 
 export default function Home() {
   const [videos, setVideos] = useState<any[]>([]);
@@ -21,7 +20,7 @@ export default function Home() {
         const res: any = await apiClient.getVideos();
         console.log("Fetched Videos:", res.data);
         if (Array.isArray(res.data) && res.data.length > 0) {
-          setVideos([...res.data, ...res.data]); // Duplicate videos for looping
+          setVideos([...res.data, ...res.data, ...res.data]); // Tripling videos for smooth looping
         } else {
           setError('No videos available.');
         }
@@ -36,9 +35,25 @@ export default function Home() {
     fetchVideos();
   }, []);
 
+  const handleScroll = useCallback(() => {
+    if (containerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
+      if (scrollTop + clientHeight >= scrollHeight - 10) {
+        containerRef.current.scrollTo({ top: 0, behavior: 'instant' }); // Instantly jump to first video
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
   return (
     <div className="min-h-screen bg-black text-white">
-      <Header />
       
       {isLoading && (
         <div className="flex items-center justify-center min-h-screen">
@@ -51,7 +66,10 @@ export default function Home() {
       )}
 
       {!isLoading && !error && videos.length > 0 && (
-        <div ref={containerRef} className="h-screen overflow-y-auto snap-y snap-mandatory">
+        <div
+          ref={containerRef}
+          className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide"
+        >
           {videos.map((video, index) => (
             <div key={index} className="h-screen flex snap-center justify-center items-center">
               <div className="w-full h-full flex justify-center items-center p-4">
