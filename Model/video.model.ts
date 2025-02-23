@@ -1,6 +1,8 @@
+// File: /src/models/Video.ts
 import mongoose from 'mongoose';
+import { VideoTag } from '../TempFiles/video.tag';
 
-export const VIDEO_DIMENSIONs = {
+export const VIDEO_DIMENSIONS = {
   width: 1080,
   height: 1920,
 } as const;
@@ -8,13 +10,12 @@ export const VIDEO_DIMENSIONs = {
 export interface IVideo {
   _id?: mongoose.Types.ObjectId;
   userId?: mongoose.Types.ObjectId;
-  data?: Buffer;
   title: string;
   description: string;
   videoUrl: string;
   thumbnailUrl: string;
   controls?: boolean;
-  tags?: string[];
+  tags: VideoTag[]; // use our enum here
   transforamtion?: {
     width: number;
     height: number;
@@ -52,22 +53,24 @@ const videoSchema = new mongoose.Schema<IVideo>(
       type: Boolean,
       default: true,
     },
+    tags: {
+      type: [String],
+      enum: Object.values(VideoTag), // restrict to enum values
+      required: [true, 'Tags are required'],
+    },
     transforamtion: {
       width: {
         type: Number,
-        default: VIDEO_DIMENSIONs.width,
+        default: VIDEO_DIMENSIONS.width,
       },
       height: {
         type: Number,
-        default: VIDEO_DIMENSIONs.height,
+        default: VIDEO_DIMENSIONS.height,
       },
       quality: {
         type: Number,
         min: 1,
         max: 100,
-      },
-      tags: {
-        type: [String],
       },
     },
   },
@@ -76,6 +79,5 @@ const videoSchema = new mongoose.Schema<IVideo>(
   },
 );
 
-const Video =
-  mongoose.models?.Video || mongoose.model<IVideo>('Video', videoSchema);
+const Video = mongoose.models?.Video || mongoose.model<IVideo>('Video', videoSchema);
 export default Video;

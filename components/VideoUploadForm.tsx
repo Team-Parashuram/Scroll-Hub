@@ -10,6 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { VideoTag } from '@/TempFiles/video.tag';
 
 export default function VideoUploadForm() {
   const [title, setTitle] = useState('');
@@ -18,10 +19,10 @@ export default function VideoUploadForm() {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [errors, setErrors] = useState<{
-    title?: string;
-    description?: string;
-  }>({});
+  const [tags, setTags] = useState<VideoTag[]>([]);
+  const [errors, setErrors] = useState<{ title?: string; description?: string; tags?: string }>({});
+
+  const availableTags = Object.values(VideoTag);
 
   const handleUploadSuccess = (response: IKUploadResponse) => {
     setVideoUrl(response.filePath);
@@ -32,10 +33,19 @@ export default function VideoUploadForm() {
     setUploadProgress(progress);
   };
 
+  const toggleTag = (tag: VideoTag) => {
+    if (tags.includes(tag)) {
+      setTags(tags.filter(t => t !== tag));
+    } else {
+      setTags([...tags, tag]);
+    }
+  };
+
   const validateForm = () => {
-    const newErrors: { title?: string; description?: string } = {};
+    const newErrors: { title?: string; description?: string; tags?: string } = {};
     if (!title) newErrors.title = 'Title is required';
     if (!description) newErrors.description = 'Description is required';
+    if (tags.length === 0) newErrors.tags = 'At least one tag is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -43,7 +53,6 @@ export default function VideoUploadForm() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm() || !videoUrl) return;
-
     setLoading(true);
     try {
       await apiClient.createVideo({
@@ -51,11 +60,13 @@ export default function VideoUploadForm() {
         description,
         videoUrl,
         thumbnailUrl,
+        tags,
       });
       setTitle('');
       setDescription('');
       setVideoUrl('');
       setThumbnailUrl('');
+      setTags([]);
       setUploadProgress(0);
     } catch (error) {
       console.error(error);
@@ -96,38 +107,44 @@ export default function VideoUploadForm() {
           }`}
           placeholder="Enter video description"
         />
-        {errors.description && (
-          <p className="text-red-400 text-sm">{errors.description}</p>
-        )}
+        {errors.description && <p className="text-red-400 text-sm">{errors.description}</p>}
+      </div>
+
+      <div className="space-y-2">
+        <Label className="text-purple-200">Tags</Label>
+        <div className="flex flex-wrap gap-2">
+          {availableTags.map((tag, index) => (
+            <button
+              type="button"
+              key={index}
+              onClick={() => toggleTag(tag)}
+              className={`px-3 py-1 rounded-full border ${
+                tags.includes(tag)
+                  ? 'bg-purple-600 text-purple-100 border-purple-600'
+                  : 'bg-transparent text-purple-200 border-purple-700/50'
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+        {errors.tags && <p className="text-red-400 text-sm">{errors.tags}</p>}
       </div>
 
       <div className="space-y-2">
         <Label className="text-purple-200">Upload Video</Label>
         <div className="bg-purple-900/20 border border-purple-700/50 rounded-lg p-4">
-          <FileUpload
-            fileType="video"
-            onSuccess={handleUploadSuccess}
-            onProgress={handleUploadProgress}
-          />
+          <FileUpload fileType="video" onSuccess={handleUploadSuccess} onProgress={handleUploadProgress} />
           {uploadProgress > 0 && (
             <div className="mt-4">
-              <Progress
-                value={uploadProgress}
-                className="h-2 bg-purple-900/40"
-              />
-              <p className="text-purple-200 text-sm mt-2">
-                Upload progress: {Math.round(uploadProgress)}%
-              </p>
+              <Progress value={uploadProgress} className="h-2 bg-purple-900/40" />
+              <p className="text-purple-200 text-sm mt-2">Upload progress: {Math.round(uploadProgress)}%</p>
             </div>
           )}
         </div>
       </div>
 
-      <Button
-        type="submit"
-        disabled={loading || !uploadProgress}
-        className="w-full bg-purple-600 hover:bg-purple-500 text-purple-100 transition-colors"
-      >
+      <Button type="submit" disabled={loading || !videoUrl} className="w-full bg-purple-600 hover:bg-purple-500 text-purple-100 transition-colors">
         {loading ? (
           <div className="flex items-center justify-center space-x-2">
             <Loader2 className="w-4 h-4 animate-spin" />
