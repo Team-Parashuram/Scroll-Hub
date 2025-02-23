@@ -25,6 +25,13 @@ const Chat = () => {
   const apiKeyRef = useRef<string>('');
   const [genAI, setGenAI] = useState<GoogleGenerativeAI | null>(null);
   const [model, setModel] = useState<any>(null);
+  const [prompt, setPrompt] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [chat, setChat] = useState<{
+    id: number;
+    type: 'user' | 'ai';
+    message: string;
+  }[]>([]);
 
   useEffect(() => {
     const fetchApiKey = async () => {
@@ -46,16 +53,6 @@ const Chat = () => {
     maxOutputTokens: 8192,
     responseMimeType: 'text/plain',
   };
-
-  const [prompt, setPrompt] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [chat, setChat] = useState<
-    {
-      id: number;
-      type: 'user' | 'ai';
-      message: string;
-    }[]
-  >([]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -99,11 +96,12 @@ const Chat = () => {
       setChat((prev) => [...prev, aiMessage]);
       setPrompt('');
       toast.success('Message sent successfully', {
-        icon: <CheckCircle2 />,
+        icon: <CheckCircle2 className="text-purple-400" />,
         style: {
           borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
+          background: '#1a1a1a',
+          color: '#d1d1d1',
+          border: '1px solid rgba(139, 92, 246, 0.3)',
         },
       });
     } catch (error) {
@@ -118,8 +116,9 @@ const Chat = () => {
         icon: <CircleX />,
         style: {
           borderRadius: '10px',
-          background: '#ff4b4b',
-          color: '#fff',
+          background: '#1a1a1a',
+          color: '#ff4b4b',
+          border: '1px solid rgba(239, 68, 68, 0.3)',
         },
       });
     } finally {
@@ -138,28 +137,29 @@ const Chat = () => {
     toast.success('Chat cleared', {
       style: {
         borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
+        background: '#1a1a1a',
+        color: '#d1d1d1',
+        border: '1px solid rgba(139, 92, 246, 0.3)',
       },
     });
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-br from-black to-indigo-950">
       <Header />
-      <div className="max-w-xl mx-auto mt-8 p-4">
-        <Card className="w-full shadow-2xl border-2 border-primary/10">
-          <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b border-border flex flex-row items-center justify-between">
+      <div className="max-w-xl mx-auto pt-8 p-4">
+        <Card className="bg-black/40 backdrop-blur-sm border-purple-900/50 shadow-2xl">
+          <CardHeader className="border-b border-purple-900/30 flex flex-row items-center justify-between bg-black/60">
             <div className="flex items-center space-x-2">
-              <MessageCircle className="text-primary" />
-              <CardTitle className="text-primary">Scroll-Hub AI</CardTitle>
+              <MessageCircle className="text-purple-400" />
+              <CardTitle className="text-purple-200">Scroll-Hub AI</CardTitle>
             </div>
             {chat.length > 0 && (
               <Button
-                variant="destructive"
+                variant="ghost"
                 size="sm"
                 onClick={clearChat}
-                className="opacity-70 hover:opacity-100 transition-opacity"
+                className="text-purple-300 hover:text-purple-100 hover:bg-purple-900/30"
               >
                 Clear Chat
               </Button>
@@ -168,7 +168,7 @@ const Chat = () => {
           <CardContent className="p-4">
             <div
               ref={scrollRef}
-              className="h-[400px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-track-secondary/10 scrollbar-thumb-primary/50"
+              className="h-[400px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-track-purple-900/20 scrollbar-thumb-purple-600/50"
             >
               <AnimatePresence>
                 {chat.map((item) => (
@@ -182,27 +182,28 @@ const Chat = () => {
                       item.type === 'user' ? 'justify-end' : 'justify-start'
                     } space-x-2`}
                   >
-                    {item.type === 'ai' && <Bot className="text-secondary" />}
+                    {item.type === 'ai' && (
+                      <Bot className="text-purple-400 h-5 w-5" />
+                    )}
                     <div
                       className={`
                         p-3 rounded-xl max-w-[80%] shadow-sm
                         ${
                           item.type === 'user'
-                            ? 'bg-primary/20 text-primary-foreground'
-                            : 'bg-secondary/20 text-secondary-foreground'
+                            ? 'bg-purple-900/30 text-purple-200'
+                            : 'bg-black/60 text-purple-300'
                         }
                       `}
                     >
                       {item.message}
                     </div>
                     {item.type === 'user' && (
-                      <UserCircle className="text-primary" />
+                      <UserCircle className="text-purple-400 h-5 w-5" />
                     )}
                   </motion.div>
                 ))}
               </AnimatePresence>
             </div>
-
             <div className="mt-4 flex space-x-2">
               <Input
                 value={prompt}
@@ -210,19 +211,18 @@ const Chat = () => {
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about social media wellness..."
                 disabled={loading}
-                className="flex-grow"
+                className="flex-grow bg-black/60 border-purple-900/30 text-purple-200 placeholder-purple-400/50 focus:border-purple-500"
               />
               <Button
                 onClick={handleSubmit}
                 disabled={loading || !prompt.trim()}
-                className="w-24"
-                variant="default"
+                className="bg-purple-900/80 hover:bg-purple-800 text-purple-200"
               >
                 {loading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
                   <SendHorizontal className="mr-2 h-4 w-4" />
-                )}{' '}
+                )}
                 Send
               </Button>
             </div>

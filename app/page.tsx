@@ -37,7 +37,6 @@ export default function Home() {
     fetchVideos();
   }, []);
 
-  // Get current videos for the page
   const getCurrentVideos = () => {
     const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
     const endIndex = startIndex + VIDEOS_PER_PAGE;
@@ -54,7 +53,7 @@ export default function Home() {
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-4 py-2 rounded-lg bg-gray-800 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700 transition-colors"
+        className="flex items-center gap-1 px-4 py-2 rounded-lg bg-black/40 text-purple-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-900/30 transition-colors border border-purple-900/30"
       >
         <ChevronLeft className="w-4 h-4" />
         Previous
@@ -65,10 +64,10 @@ export default function Home() {
           <button
             key={pageNum}
             onClick={() => handlePageChange(pageNum)}
-            className={`w-10 h-10 rounded-lg transition-colors ${
+            className={`w-10 h-10 rounded-lg transition-colors border ${
               currentPage === pageNum
-                ? 'bg-purple-600 text-white'
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                ? 'bg-purple-900/60 text-purple-200 border-purple-700/50'
+                : 'bg-black/40 text-purple-300 border-purple-900/30 hover:bg-purple-900/30'
             }`}
           >
             {pageNum}
@@ -79,7 +78,7 @@ export default function Home() {
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-1 px-4 py-2 rounded-lg bg-gray-800 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700 transition-colors"
+        className="flex items-center gap-1 px-4 py-2 rounded-lg bg-black/40 text-purple-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-900/30 transition-colors border border-purple-900/30"
       >
         Next
         <ChevronRight className="w-4 h-4" />
@@ -90,13 +89,13 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="min-h-screen bg-gray-950">
+      <div className="min-h-screen bg-gradient-to-br from-black to-indigo-950">
         <main className="container mx-auto px-4 py-8">
           <section className="mb-8 text-center">
-            <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="mb-4 text-4xl font-bold tracking-tight text-purple-200 md:text-5xl lg:text-6xl">
               Discover Amazing Videos
             </h1>
-            <p className="mx-auto max-w-2xl text-lg text-gray-400">
+            <p className="mx-auto max-w-2xl text-lg text-purple-300">
               Explore a universe of creative content shared by our community
             </p>
           </section>
@@ -109,8 +108,8 @@ export default function Home() {
             )}
 
             {error && (
-              <Alert variant="destructive" className="mb-8 bg-red-900/50 text-red-200">
-                <AlertDescription>{error}</AlertDescription>
+              <Alert variant="destructive" className="mb-8 bg-red-900/20 border-red-700/50">
+                <AlertDescription className="text-red-200">{error}</AlertDescription>
               </Alert>
             )}
 
@@ -122,10 +121,10 @@ export default function Home() {
             )}
 
             {!isLoading && !error && videos.length === 0 && (
-              <div className="flex min-h-[400px] flex-col items-center justify-center rounded-xl border border-gray-800 bg-gray-900/50 p-8 text-center">
-                <div className="mb-4 rounded-full bg-gray-800 p-4">
+              <div className="flex min-h-[400px] flex-col items-center justify-center rounded-xl border border-purple-900/30 bg-black/40 backdrop-blur-sm p-8 text-center">
+                <div className="mb-4 rounded-full bg-purple-900/30 p-4">
                   <svg
-                    className="h-8 w-8 text-gray-400"
+                    className="h-8 w-8 text-purple-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -138,8 +137,8 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <h3 className="mb-2 text-xl font-semibold text-white">No Videos Yet</h3>
-                <p className="text-gray-400">
+                <h3 className="mb-2 text-xl font-semibold text-purple-200">No Videos Yet</h3>
+                <p className="text-purple-300">
                   Be the first to share an amazing video with the community!
                 </p>
               </div>

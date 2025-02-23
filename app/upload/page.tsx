@@ -1,6 +1,6 @@
 'use client';
 
-import { Upload, Video } from 'lucide-react';
+import { Upload, Video, Sparkles, Shield, Lightbulb } from 'lucide-react';
 import VideoUploadForm from '@/components/VideoUploadForm';
 import {
   Card,
@@ -12,79 +12,123 @@ import {
 
 export default function VideoUploadPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
-      {/* Main Content */}
+    <div className="min-h-screen bg-gradient-to-br from-black to-indigo-950 flex flex-col">
       <div className="flex-1 container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto">
-          <Card className="bg-purple-900/20 backdrop-blur-sm border-purple-700/50">
-            <CardHeader className="text-center">
-              <div className="flex items-center justify-center space-x-3 mb-2">
-                <Video className="h-8 w-8 text-purple-300" />
-                <CardTitle className="text-3xl font-bold text-purple-100">
-                  Upload New Reel
-                </CardTitle>
-              </div>
-              <CardDescription className="text-purple-200">
-                Share your cosmic creation with the universe
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-purple-800/10 rounded-lg p-6 border border-purple-600/30">
-                <div className="flex items-center justify-center mb-6">
-                  <div className="rounded-full bg-purple-700/30 p-4">
-                    <Upload className="h-8 w-8 text-purple-300" />
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
+          {/* Upload Form Section - Left Side */}
+          <div className="lg:col-span-7">
+            <Card className="bg-black/40 backdrop-blur-sm border-purple-900/50 h-full">
+              <CardHeader className="text-center">
+                <div className="flex items-center justify-center space-x-3 mb-2">
+                  <Video className="h-8 w-8 text-purple-400" />
+                  <CardTitle className="text-3xl font-bold text-purple-200">
+                    Upload New Reel
+                  </CardTitle>
                 </div>
-                <VideoUploadForm />
-              </div>
-            </CardContent>
-          </Card>
+                <CardDescription className="text-purple-300">
+                  Share your cosmic creation with the universe
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-black/60 rounded-lg p-6 border border-purple-800/30">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="rounded-full bg-purple-900/30 p-4">
+                      <Upload className="h-8 w-8 text-purple-400" />
+                    </div>
+                  </div>
+                  <VideoUploadForm />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-          {/* Additional Information Section */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="bg-purple-900/20 backdrop-blur-sm border-purple-700/50">
-              <CardHeader>
-                <CardTitle className="text-lg text-purple-100">
+          {/* Requirements Section - Right Side */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            {/* Upload Guidelines */}
+            <Card className="bg-black/40 backdrop-blur-sm border-purple-900/50">
+              <CardHeader className="flex flex-row items-center gap-2">
+                <Shield className="h-5 w-5 text-purple-400" />
+                <CardTitle className="text-lg text-purple-200">
                   Upload Guidelines
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-purple-200">
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+              <CardContent className="text-purple-300">
+                <ul className="space-y-3">
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
                     <span>Maximum file size: 100MB</span>
                   </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
                     <span>Supported formats: MP4, MOV</span>
                   </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
                     <span>Maximum duration: 3 minutes</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span>Minimum duration: 1 minutes</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-900/20 backdrop-blur-sm border-purple-700/50">
-              <CardHeader>
-                <CardTitle className="text-lg text-purple-100">
+            {/* Tips Section */}
+            <Card className="bg-black/40 backdrop-blur-sm border-purple-900/50">
+              <CardHeader className="flex flex-row items-center gap-2">
+                <Lightbulb className="h-5 w-5 text-purple-400" />
+                <CardTitle className="text-lg text-purple-200">
                   Tips for Better Reels
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-purple-200">
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+              <CardContent className="text-purple-300">
+                <ul className="space-y-3">
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
                     <span>Use high-quality lighting</span>
                   </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span>Use proper tags</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
                     <span>Keep content engaging and concise</span>
                   </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
                     <span>Add relevant tags for better reach</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Community Guidelines */}
+            <Card className="bg-black/40 backdrop-blur-sm border-purple-900/50">
+              <CardHeader className="flex flex-row items-center gap-2">
+                <Sparkles className="h-5 w-5 text-purple-400" />
+                <CardTitle className="text-lg text-purple-200">
+                  Community Standards
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-purple-300">
+                <ul className="space-y-3">
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span>Respect intellectual property rights</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span>Fully Secure Database for Videos and Information</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span>No explicit or harmful content</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span>Be mindful of community guidelines</span>
                   </li>
                 </ul>
               </CardContent>

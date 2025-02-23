@@ -14,6 +14,7 @@ export interface IVideo {
   videoUrl: string;
   thumbnailUrl: string;
   controls?: boolean;
+  tags?: string[];
   transforamtion?: {
     width: number;
     height: number;
@@ -64,6 +65,9 @@ const videoSchema = new mongoose.Schema<IVideo>(
         type: Number,
         min: 1,
         max: 100,
+      },
+      tags: {
+        type: [String],
       },
     },
   },
