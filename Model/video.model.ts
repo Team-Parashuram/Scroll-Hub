@@ -15,7 +15,7 @@ export interface IVideo {
   videoUrl: string;
   thumbnailUrl: string;
   controls?: boolean;
-  tags: VideoTag[]; // use our enum here
+  tags: VideoTag[];
   transforamtion?: {
     width: number;
     height: number;
@@ -55,7 +55,7 @@ const videoSchema = new mongoose.Schema<IVideo>(
     },
     tags: {
       type: [String],
-      enum: Object.values(VideoTag), // restrict to enum values
+      enum: Object.values(VideoTag),
       required: [true, 'Tags are required'],
     },
     transforamtion: {
