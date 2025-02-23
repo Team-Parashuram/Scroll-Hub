@@ -9,13 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import Header from '@/components/Header';
 
 export default function VideoUploadPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
-      <Header />
-
       {/* Main Content */}
       <div className="flex-1 container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">

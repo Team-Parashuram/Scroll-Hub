@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Mail, Lock, Home, ArrowRight, UserPlus } from 'lucide-react';
+import { Mail, Lock, ArrowRight, UserPlus } from 'lucide-react';
 import CosmicLoader from '@/components/Loader';
 import apiRequest from '@/util/apiRequest';
 import { Button } from '@/components/ui/button';
@@ -61,26 +61,6 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
-      {/* Navigation */}
-      <nav className="p-4 bg-purple-900/20 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link
-            href="/"
-            className="flex items-center space-x-2 text-purple-100 hover:text-purple-200 transition-colors"
-          >
-            <Home size={24} />
-            <span className="font-semibold text-lg">Cosmic App</span>
-          </Link>
-          <div className="space-x-4">
-            <Link
-              href="/login"
-              className="text-purple-200 hover:text-purple-100 transition-colors"
-            >
-              Login
-            </Link>
-          </div>
-        </div>
-      </nav>
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center p-4">

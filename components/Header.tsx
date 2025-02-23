@@ -1,6 +1,6 @@
 'use client';
 
-import { Upload, LogOut, Rocket, Menu, Loader2 } from 'lucide-react';
+import { Upload, LogOut, Rocket, Menu, Loader2, Video } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -28,6 +28,15 @@ const Header = () => {
     <div className={`flex ${isMobile ? 'flex-col items-start' : 'items-center'} gap-6`}>
       {session ? (
         <>
+          <Link
+            href="/view"
+            className={`flex items-center gap-2 text-gray-300 hover:text-white transition-colors font-medium
+              ${isMobile ? 'w-full py-2' : ''}`}
+            onClick={() => isMobile && setIsMobileMenuOpen(false)}
+          >
+            <Video className="h-4 w-4" />
+            <span>Watch Videos</span>
+          </Link>
           <Link
             href="/upload"
             className={`flex items-center gap-2 text-gray-300 hover:text-white transition-colors font-medium

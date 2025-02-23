@@ -16,7 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import Header from '@/components/Header';
 
 const Page = () => {
   const [email, setEmail] = useState('');
@@ -53,8 +52,6 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
-    <Header />
-
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md bg-purple-900/20 backdrop-blur-sm border-purple-700/50">
           <CardHeader className="space-y-1">

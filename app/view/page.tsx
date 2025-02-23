@@ -69,6 +69,7 @@ export default function Home() {
         <div
           ref={containerRef}
           className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {videos.map((video, index) => (
             <div key={index} className="h-screen flex snap-center justify-center items-center">
