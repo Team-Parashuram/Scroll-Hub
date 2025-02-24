@@ -46,7 +46,7 @@ export default function VideoUploadPage() {
           </div>
 
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <Card className="bg-black/40 backdrop-blur-sm border-purple-900/50 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <Card className="mb-5 bg-black/40 backdrop-blur-sm border-purple-900/50 shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <CardHeader className="flex flex-row items-center gap-2">
                 <Shield className="h-5 w-5 text-purple-400" />
                 <CardTitle className="text-lg text-purple-200">
@@ -55,16 +55,16 @@ export default function VideoUploadPage() {
               </CardHeader>
               <CardContent className="text-purple-300">
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Maximum file size: 100MB</li>
-                  <li>Supported formats: MP4, MOV</li>
-                  <li>Maximum duration: 3 minutes</li>
-                  <li>Minimum duration: 1 minute</li>
+                  <li className="py-2">Maximum file size: 100MB</li>
+                  <li className="py-2">Supported formats: MP4, MOV</li>
+                  <li className="py-2">Maximum duration: 3 minutes</li>
+                  <li className="py-2">Minimum duration: 1 minute</li>
                 </ul>
               </CardContent>
             </Card>
 
             {/* Tips Section */}
-            <Card className="bg-black/40 backdrop-blur-sm border-purple-900/50 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <Card className="mb-5 bg-black/40 backdrop-blur-sm border-purple-900/50 shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <CardHeader className="flex flex-row items-center gap-2">
                 <Lightbulb className="h-5 w-5 text-purple-400" />
                 <CardTitle className="text-lg text-purple-200">
@@ -73,10 +73,10 @@ export default function VideoUploadPage() {
               </CardHeader>
               <CardContent className="text-purple-300">
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Use high-quality lighting</li>
-                  <li>Use proper tags</li>
-                  <li>Keep content engaging and concise</li>
-                  <li>Add relevant tags for better reach</li>
+                  <li className="py-2">Use high-quality lighting</li>
+                  <li className="py-2">Use proper tags</li>
+                  <li className="py-2">Keep content engaging and concise</li>
+                  <li className="py-2">Add relevant tags for better reach</li>
                 </ul>
               </CardContent>
             </Card>
@@ -91,10 +91,10 @@ export default function VideoUploadPage() {
               </CardHeader>
               <CardContent className="text-purple-300">
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Respect intellectual property rights</li>
-                  <li>Fully secure database for videos and information</li>
-                  <li>No explicit or harmful content</li>
-                  <li>Be mindful of community guidelines</li>
+                  <li className="py-2">Respect intellectual property rights</li>
+                  <li className="py-2">Fully secure database for videos and information</li>
+                  <li className="py-2">No explicit or harmful content</li>
+                  <li className="py-2">Be mindful of community guidelines</li>
                 </ul>
               </CardContent>
             </Card>
