@@ -14,20 +14,8 @@ const CosmicLoader: React.FC = () => {
   }));
 
   return (
-    <div className="flex min-h-[400px] flex-col items-center justify-center rounded-xl border border-purple-900/30 bg-black/40 backdrop-blur-sm relative overflow-hidden">
-      <div className="flex flex-col items-center z-10">
-        {/* Rocket with animation classes */}
-        <div className="animate-pulse">
-          <Rocket size={64} className="text-purple-400 animate-bounce" />
-        </div>
-        
-        {/* Loading text */}
-        <div className="mt-4 text-purple-200 text-lg tracking-wider animate-pulse">
-          Launching Mission...
-        </div>
-      </div>
-
-      {/* Stars using only Tailwind classes */}
+    <div>
+      <Rocket size={64} className="text-purple-400 animate-bounce" />
       {stars.map((star) => (
         <div
           key={star.id}
