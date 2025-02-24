@@ -28,7 +28,6 @@ export default function Home() {
         setTotalPages(Math.ceil(res.data.length / VIDEOS_PER_PAGE));
       } catch (error) {
         console.error('Error fetching videos:', error);
-        setError('Failed to load videos. Please try again later.');
       } finally {
         setIsLoading(false);
       }

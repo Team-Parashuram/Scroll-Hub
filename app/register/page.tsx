@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { Mail, Lock, ArrowRight, UserPlus } from 'lucide-react';
-import CosmicLoader from '@/components/Loader';
-import apiRequest from '@/util/apiRequest';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
+import CosmicLoader from '@/components/Loader';
 import { Input } from '@/components/ui/input';
+import { useRouter } from 'next/navigation';
+import apiRequest from '@/util/apiRequest';
+import { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -15,7 +15,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import Link from 'next/link';
+
 
 const Page = () => {
   const [email, setEmail] = useState('');
@@ -24,10 +25,6 @@ const Page = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  if (loading) {
-    return <CosmicLoader />;
-  }
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,95 +57,112 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-950 flex flex-col">
+    <div>
+      <div className="min-h-screen bg-gradient-to-br from-black to-indigo-950">
+        <main className="container mx-auto px-4 py-8">
+          <section className="mb-8 text-center">
+            <h1 className="mb-4 text-4xl font-bold tracking-tight text-purple-200 md:text-5xl lg:text-6xl">
+              Join Our Community
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg text-purple-300">
+              Create an account to start sharing and discovering amazing videos
+            </p>
+          </section>
 
-      {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-purple-900/20 backdrop-blur-sm border-purple-700/50">
-          <CardHeader className="space-y-1">
-            <div className="flex items-center justify-center space-x-2">
-              <UserPlus className="h-8 w-8 text-purple-300" />
-              <CardTitle className="text-2xl text-purple-100">
-                Create Account
-              </CardTitle>
-            </div>
-            <CardDescription className="text-purple-200">
-              Enter your details to register for an account
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleRegister} className="space-y-4">
-              <div className="space-y-2">
-                <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-5 w-5 text-purple-300" />
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 bg-purple-800/20 border-purple-600/50 text-purple-100 placeholder:text-purple-400"
-                    required
-                  />
-                </div>
+          <div className="mx-auto max-w-md">
+            {loading ? (
+              <div className="flex min-h-[400px] items-center justify-center">
+                <CosmicLoader />
               </div>
-              <div className="space-y-2">
-                <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-5 w-5 text-purple-300" />
-                  <Input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 bg-purple-800/20 border-purple-600/50 text-purple-100 placeholder:text-purple-400"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-5 w-5 text-purple-300" />
-                  <Input
-                    type="password"
-                    placeholder="Confirm Password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="pl-10 bg-purple-800/20 border-purple-600/50 text-purple-100 placeholder:text-purple-400"
-                    required
-                  />
-                </div>
-              </div>
+            ) : (
+              <Card className="bg-black/40 backdrop-blur-sm border border-purple-900/30">
+                <CardHeader className="space-y-1">
+                  <div className="flex items-center justify-center space-x-2">
+                    <UserPlus className="h-8 w-8 text-purple-300" />
+                    <CardTitle className="text-2xl text-purple-200">
+                      Create Account
+                    </CardTitle>
+                  </div>
+                  <CardDescription className="text-purple-300">
+                    Enter your details to register for an account
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleRegister} className="space-y-4">
+                    <div className="space-y-2">
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-3 h-5 w-5 text-purple-300" />
+                        <Input
+                          type="email"
+                          placeholder="Email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="pl-10 bg-black/40 border-purple-900/30 text-purple-200 placeholder:text-purple-400"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="relative">
+                        <Lock className="absolute left-3 top-3 h-5 w-5 text-purple-300" />
+                        <Input
+                          type="password"
+                          placeholder="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          className="pl-10 bg-black/40 border-purple-900/30 text-purple-200 placeholder:text-purple-400"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="relative">
+                        <Lock className="absolute left-3 top-3 h-5 w-5 text-purple-300" />
+                        <Input
+                          type="password"
+                          placeholder="Confirm Password"
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          className="pl-10 bg-black/40 border-purple-900/30 text-purple-200 placeholder:text-purple-400"
+                          required
+                        />
+                      </div>
+                    </div>
 
-              {error && (
-                <Alert
-                  variant="destructive"
-                  className="bg-red-900/20 border-red-700/50"
-                >
-                  <AlertDescription className="text-red-200">
-                    {error}
-                  </AlertDescription>
-                </Alert>
-              )}
+                    {error && (
+                      <Alert
+                        variant="destructive"
+                        className="bg-red-900/20 border-red-700/50"
+                      >
+                        <AlertDescription className="text-red-200">
+                          {error}
+                        </AlertDescription>
+                      </Alert>
+                    )}
 
-              <Button
-                type="submit"
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-              >
-                Register
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+                    <Button
+                      type="submit"
+                      className="w-full bg-purple-900/60 hover:bg-purple-800 text-purple-200 border border-purple-700/50"
+                    >
+                      Register
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
 
-              <div className="text-center text-purple-200">
-                Already have an account?{' '}
-                <Link
-                  href="/login"
-                  className="text-purple-300 hover:text-purple-200 underline"
-                >
-                  Login
-                </Link>
-              </div>
-            </form>
-          </CardContent>
-        </Card>
+                    <div className="text-center text-purple-300">
+                      Already have an account?{' '}
+                      <Link
+                        href="/login"
+                        className="text-purple-200 hover:text-purple-100 underline"
+                      >
+                        Login
+                      </Link>
+                    </div>
+                  </form>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        </main>
       </div>
     </div>
   );
