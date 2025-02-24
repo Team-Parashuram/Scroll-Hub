@@ -25,8 +25,7 @@ export default function Home() {
           setError('No videos available.');
         }
       } catch (error) {
-        console.error('Error fetching videos:', error);
-        setError('Failed to load videos.');
+        console.error('Error fetching videos:', error); 
       } finally {
         setIsLoading(false);
       }
