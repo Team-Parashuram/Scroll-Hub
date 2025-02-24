@@ -35,6 +35,11 @@ export async function PUT(request: NextRequest) {
     video.report = (video.report || 0) + 1;
     await video.save();
     
+    if(video.report >= 5) {
+      await Video.findByIdAndDelete(video._id);
+      return sendResponse(200, "Video deleted successfully");
+    }
+
     return NextResponse.json(video);
   } catch (error) {
     console.error(error);
