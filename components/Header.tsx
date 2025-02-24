@@ -97,7 +97,7 @@ const Header = () => {
               className="block"
               aria-label="Home"
             >
-            {session && 
+            {!session && 
               <Image 
                 src="/Scroll-Hub.png"
                 alt="ScrollHub Logo"
