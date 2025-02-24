@@ -3,8 +3,8 @@ import React from 'react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'User Registration | Built by Shardendu Mishra',
-  description: 'Create your account to access a student-focused shorts platform—designed for entertainment and learning during study breaks.',
+  title: 'Ask AI | Built by Shardendu Mishra',
+  description: 'An AI-powered shorts platform designed to keep students engaged, entertained, and informed during study breaks.',
 }
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {

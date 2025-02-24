@@ -1,7 +1,13 @@
 import Header from '@/components/Header'
 import React from 'react'
+import { Metadata } from 'next'
 
-const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const metadata: Metadata = {
+  title: 'Upload Videos | Built by Shardendu Mishra',
+  description: 'Easily upload and share short videos on our student-focused platform—designed for entertainment and learning during study breaks.',
+}
+
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div>
       <Header />
@@ -10,4 +16,4 @@ const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   )
 }
 
-export default layout
+export default Layout
