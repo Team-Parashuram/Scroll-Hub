@@ -32,9 +32,6 @@ export async function POST(request: NextRequest) {
     const body: IVideo = await request.json();
     body.userId = new mongoose.Types.ObjectId(session.user.id);
 
-    console.log(body);
-    console.log(session);
-
     if (
       !body.title ||
       !body.description ||
@@ -54,6 +51,7 @@ export async function POST(request: NextRequest) {
       },
     };
 
+    console.log("The Video Data is:",videoData);
     const video = new Video(videoData);
     await video.save();
 

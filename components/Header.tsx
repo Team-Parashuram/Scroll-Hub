@@ -97,13 +97,14 @@ const Header = () => {
               className="block"
               aria-label="Home"
             >
+            {session && 
               <Image 
                 src="/Scroll-Hub.png"
                 alt="ScrollHub Logo"
                 width={80}
                 height={80}
                 className="h-8 w-auto sm:h-10"
-              />
+              /> }
             </Link>
           </div>
 

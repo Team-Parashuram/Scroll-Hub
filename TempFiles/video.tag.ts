@@ -1,12 +1,12 @@
 export enum VideoTag {
-  Education = 'education',
-  Music = 'music',
-  Technology = 'technology',
-  Sports = 'sports',
   Entertainment = 'entertainment',
-  News = 'news',
+  Technology = 'technology',
+  Education = 'education',
+  Lifestyle = 'lifestyle',
+  Sports = 'sports',
   Gaming = 'gaming',
   Health = 'health',
   Travel = 'travel',
-  Lifestyle = 'lifestyle',
+  Music = 'music',
+  News = 'news',
 }
