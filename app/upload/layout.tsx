@@ -3,7 +3,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Upload Videos | Built by Shardendu Mishra',
+  title: 'Upload Videos | Social Media Platform Made By Shardendu Mishra',
   description: 'Easily upload and share short videos on our student-focused platform—designed for entertainment and learning during study breaks.',
 }
 

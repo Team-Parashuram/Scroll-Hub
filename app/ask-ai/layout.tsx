@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import React from 'react'
 
 export const metadata: Metadata = {
-  title: 'Ask AI | Built by Shardendu Mishra',
+  title: 'Ask AI | Social Media Platform Made By Shardendu Mishra',
   description: 'An AI-powered shorts platform designed to keep students engaged, entertained, and informed during study breaks.',
 }
 

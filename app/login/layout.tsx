@@ -3,7 +3,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'User Login | Built by Shardendu Mishra',
+  title: 'User Login | Social Media Platform Made By Shardendu Mishra',
   description: 'Securely log in to access a personalized experience on our student-focused shorts platform—designed for entertainment and learning between study sessions.',
 }
 
