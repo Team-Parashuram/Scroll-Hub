@@ -1,6 +1,5 @@
-import Header from '@/components/Header'
-import React from 'react'
 import { Metadata } from 'next'
+import React from 'react'
 
 export const metadata: Metadata = {
   title: 'Ask AI | Built by Shardendu Mishra',
@@ -10,7 +9,6 @@ export const metadata: Metadata = {
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div>
-      <Header />
       {children}
     </div>
   )
