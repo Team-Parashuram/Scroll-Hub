@@ -37,6 +37,10 @@ class ApiClient {
   async getVideos() {
     return this.fetch('/videos');
   }
+  
+  async getUsers() {
+    return this.fetch('/user');
+  }
 
   async deleteVideo(id: string) {
     return this.fetch(`/videos?id=${id}`, {

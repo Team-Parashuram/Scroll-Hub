@@ -13,6 +13,22 @@ export default function VideoComponent({ video }: { video: IVideo }) {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const { data: session } = useSession();
   const videoRef = React.useRef<HTMLDivElement>(null);
+  // const [reportedVideo, setReportedVideo] = React.useState<string[] | null>(null);
+
+  // React.useEffect(() => {
+  //   const fetchReportedVideos = async () => {
+  //     try {
+  //       const response = await apiClient.getUsers();
+  //       console.log(response);
+  //       setReportedVideo((response as { data: string[] }).data);
+  //     } catch (error) {
+  //       console.error('Failed to get reported videos', error);
+  //     }
+  //   };
+  //   fetchReportedVideos();
+  // }, []);
+  
+  // const exist = video._id ? reportedVideo?.includes(video._id.toString()) : false;
 
   const handleDelete = async () => {
     try {
@@ -46,7 +62,7 @@ export default function VideoComponent({ video }: { video: IVideo }) {
       console.error('Failed to report video', error);
       toast.error('Failed to report video');
     }
-  }
+  };
 
   const handleVideoPause = () => {
     setIsPlaying(false);
@@ -57,14 +73,15 @@ export default function VideoComponent({ video }: { video: IVideo }) {
       className="group relative overflow-hidden bg-gray-900 border-gray-800/50 rounded-xl transition-all duration-300 w-full max-w-xs mx-auto"
       ref={videoRef}
     >
-      {/* Report button */}
-      <button
-        onClick={handleReport}
-        className="absolute top-3 right-3 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-gray-800/80 transition-colors"
-        aria-label="Report video"
-      >
-        <ShieldAlertIcon className="w-4 h-4 text-gray-300" />
-      </button>
+      {/* {reportedVideo !== null && !exist && ( */}
+        <button
+          onClick={handleReport}
+          className="absolute top-3 right-3 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-gray-800/80 transition-colors"
+          aria-label="Report video"
+        >
+          <ShieldAlertIcon className="w-4 h-4 text-gray-300" />
+        </button>
+      {/* )} */}
 
       <div
         className="relative w-full"
@@ -95,8 +112,7 @@ export default function VideoComponent({ video }: { video: IVideo }) {
             />
           </div>
 
-          {/* Enhanced gradient overlay */}
-          <div 
+          <div
             className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent opacity-0 transition-opacity duration-300 pointer-events-none ${
               isPlaying ? 'opacity-0' : ''
             }`}
@@ -118,18 +134,15 @@ export default function VideoComponent({ video }: { video: IVideo }) {
           {canDelete && (
             <button
               onClick={handleDelete}
-              className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300`}
+              className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300"
               aria-label="Delete video"
             >
-              <Trash2Icon
-                className={`w-4 h-4 transition-colors duration-300`}
-              />
+              <Trash2Icon className="w-4 h-4 transition-colors duration-300" />
             </button>
           )}
         </div>
       </CardContent>
 
-      {/* Video play overlay */}
       {!isPlaying && !isLoading && (
         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none">
           <div className="bg-black/30 p-4 rounded-full">

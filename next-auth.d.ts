@@ -5,6 +5,7 @@ declare module 'next-auth' {
     user: {
       role: string;
       id: string;
+      reportedVideos: string[];
     } & DefaultSession['user'];
   }
 }
