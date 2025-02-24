@@ -4,57 +4,58 @@ import React from 'react';
 import { Rocket } from 'lucide-react';
 
 const CosmicLoader: React.FC = () => {
+  // Generate an array of star objects with predefined properties instead of using random inline styles
+  const stars = Array.from({ length: 50 }, (_, i) => ({
+    id: i,
+    top: `${Math.floor(Math.random() * 100)}%`,
+    left: `${Math.floor(Math.random() * 100)}%`,
+    size: Math.random() > 0.7 ? 2 : 1,
+    delay: `${Math.floor(Math.random() * 2000)}ms`,
+  }));
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-indigo-950 to-purple-950">
-      <div className="relative flex flex-col items-center">
+    <div className="flex min-h-[400px] flex-col items-center justify-center rounded-xl border border-purple-900/30 bg-black/40 backdrop-blur-sm relative overflow-hidden">
+      <div className="flex flex-col items-center z-10">
+        {/* Rocket with animation classes */}
         <div className="animate-pulse">
-          <Rocket
-            size={64}
-            className="text-purple-400 animate-[rocket_2s_cubic-bezier(0.45,0,0.55,1)_infinite]"
-          />
+          <Rocket size={64} className="text-purple-400 animate-bounce" />
         </div>
+        
+        {/* Loading text */}
         <div className="mt-4 text-purple-200 text-lg tracking-wider animate-pulse">
           Launching Mission...
         </div>
-
-        {/* Starry Background */}
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-white/60 rounded-full opacity-50"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              animation: 'twinkle 2s infinite alternate',
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
       </div>
 
-      <style jsx global>{`
-        @keyframes rocket {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-30px);
-          }
-        }
-        @keyframes twinkle {
-          from {
-            opacity: 0.2;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-      `}</style>
+      {/* Stars using only Tailwind classes */}
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className={`absolute bg-white/60 rounded-full opacity-0 animate-[fadeInOut_2s_infinite_alternate]`}
+          style={{
+            top: star.top,
+            left: star.left,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            animationDelay: star.delay,
+          }}
+        />
+      ))}
     </div>
   );
 };
+
+// Add the custom animation to your tailwind.config.js:
+// extend: {
+//   keyframes: {
+//     fadeInOut: {
+//       '0%': { opacity: 0.2 },
+//       '100%': { opacity: 1 },
+//     },
+//   },
+//   animation: {
+//     'bounce': 'bounce 2s cubic-bezier(0.45, 0, 0.55, 1) infinite',
+//   },
+// }
 
 export default CosmicLoader;
