@@ -61,6 +61,7 @@ export default function VideoUploadForm() {
         videoUrl,
         thumbnailUrl,
         tags,
+        report: 0,
       });
       setTitle('');
       setDescription('');
