@@ -7,6 +7,11 @@ const nextConfig: import('next').NextConfig = {
         hostname: 'ik.imagekit.io',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        port: '',
+      },
     ],
   },
 };

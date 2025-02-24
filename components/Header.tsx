@@ -89,15 +89,14 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-gray-800 bg-black/90 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+        <div className="flex h-16 items-center justify-between">  
           <div className="flex-shrink-0">
             <Link
               href="/"
               className="block"
               aria-label="Home"
             >
-              <Image 
+              <Image
                 src="https://raw.githubusercontent.com/MishraShardendu22/ProjectsMade/refs/heads/main/Scroll-Hub-1.png"
                 alt="ScrollHub Logo"
                 width={80}
