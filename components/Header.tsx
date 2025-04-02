@@ -29,6 +29,15 @@ const Header = () => {
       {session ? (
         <>
           <Link
+            href="https://5-chan-shardendu-mishra.vercel.app/"
+            className={`flex items-center gap-2 text-gray-300 hover:text-white transition-colors font-medium
+              ${isMobile ? 'w-full py-2' : ''}`}
+            onClick={() => isMobile && setIsMobileMenuOpen(false)}
+          >
+            <Video className="h-4 w-4" />
+            <span>Chat Anonymously</span>
+          </Link>
+          <Link
             href="/view"
             className={`flex items-center gap-2 text-gray-300 hover:text-white transition-colors font-medium
               ${isMobile ? 'w-full py-2' : ''}`}
