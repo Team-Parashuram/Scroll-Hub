@@ -1,6 +1,6 @@
 'use client';
 
-import { Upload, LogOut, Rocket, Menu, Loader2, Video } from 'lucide-react';
+import { Upload, LogOut, Rocket, Menu, Loader2, Video, ChartAreaIcon } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,7 +34,7 @@ const Header = () => {
               ${isMobile ? 'w-full py-2' : ''}`}
             onClick={() => isMobile && setIsMobileMenuOpen(false)}
           >
-            <Video className="h-4 w-4" />
+            <ChartAreaIcon className="h-4 w-4" />
             <span>Chat Anonymously</span>
           </Link>
           <Link
